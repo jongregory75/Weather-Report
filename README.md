@@ -38,4 +38,5 @@ THEN I am again presented with current and future conditions for that city
 ![ScreenShot](/assets/img/screenshot.JPG)
 
 https://github.com/jongregory75/Weather-Report
+
 https://jongregory75.github.io/Weather-Report/
