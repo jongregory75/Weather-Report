@@ -156,8 +156,6 @@ $(document).ready(function () {
     //build url for forecast card weather icon
     var iconUrl = `https://openweathermap.org/img/w/${forecastData.weather[0].icon}.png`;
     var iconDescription = forecastData.weather[0].description;
-    // Create elements for a card
-    // var col = document.createElement("div");
 
     //div class="card"
     var card = document.createElement("div");
@@ -204,7 +202,7 @@ $(document).ready(function () {
 
   // Function to display 5 day forecast.
   function displayForecastWeather(forecastData) {
-    // Create unix timestamps for start and end of 5 day forecast
+    // Create unix timestamps using dayjs for start and end of 5 day forecast
 
     var startDt = dayjs().add(1, "day").startOf("day").unix();
     var endDt = dayjs().add(6, "day").startOf("day").unix();
@@ -212,10 +210,12 @@ $(document).ready(function () {
     var headingContainer = document.createElement("div");
     headingContainer.setAttribute("class", "row-10");
 
+    //initialize the forecastContainer as empty
     forecastContainer.innerHTML = "";
     forecastContainer.append(headingContainer);
     console.log(headingContainer);
 
+    //loops through daily objects, checks day and calls the functiont to build each forecast card
     for (var i = 0; i < forecastData.length; i++) {
       if (forecastData[i].dt >= startDt && forecastData[i].dt < endDt) {
         displayForecastCard(forecastData[i]);
