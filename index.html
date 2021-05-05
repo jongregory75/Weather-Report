@@ -27,97 +27,77 @@
       <p id="currentDay" class="lead"></p>
     </header>
     <main class="row">
-      <section class="text-center col-3-lg d-flex" id="">
-        <div class="mb-3">
-          <label for="cityNameInput" class="form-label">Enter your city</label>
-          <input type="textarea" class="cityNameInput" id="cityNameInput" />
-          <button
-            type="submit"
-            class="btn btn-city-select"
-            id="btn-city-select"
-          >
-            Submit
-          </button>
+      <section class="col-12 col-md-4 col-lg-3">
+        <div class="card custom-card">
+          <h3 class="card-header">Instructions</h3>
+          <div class="card-body">
+            <div class="card-text">
+              Click the button below to view current weather and forcast:
+            </div>
+          </div>
+
+          <div>
+            <label for="cityNameInput" class="form-label"
+              >Enter your city</label
+            >
+            <input type="textarea" class="cityNameInput" id="cityNameInput" />
+            <button
+              type="submit"
+              class="btn btn-city-select"
+              id="btn-city-select"
+            >
+              Submit
+            </button>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">City</li>
+            <li class="list-group-item">City</li>
+            <li class="list-group-item">City</li>
+            <li class="list-group-item">City</li>
+          </ul>
         </div>
       </section>
-      <section class="text-center col-9-lg d-flex" id="search-container">
-        <div class="card" style="width: 18rem">
-          <img
-            src="https://via.placeholder.com/50"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body-1">
-            <h5 class="card-title" id="dayName">Day Name</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+      <section class="text-center col-2-lg d-flex" id="">
+        <div class="mb-3"></div>
+      </section>
+      <section class="text-center col-10-lg d-flex" id="search-container">
+        <div class="todayContainer" id="todayContainer">
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://via.placeholder.com/50"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title" id="dayName">Day Name</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
           </div>
         </div>
-        <div class="card" style="width: 18rem">
-          <img
-            src="https://via.placeholder.com/50"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body-2">
-            <h5 class="card-title">Day Name</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem">
-          <img
-            src="https://via.placeholder.com/50"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body-3">
-            <h5 class="card-title" id="dayName">Day Name</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem">
-          <img
-            src="https://via.placeholder.com/50"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body-4">
-            <h5 class="card-title" id="dayName">Day Name</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem">
-          <img
-            src="https://via.placeholder.com/50"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body-5">
-            <h5 class="card-title" id="dayName">Day Name</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="forecastContainer" id="forecastContainer">
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://via.placeholder.com/50"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body-2">
+              <h5 class="card-title">Day Name</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
           </div>
         </div>
       </section>
     </main>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>

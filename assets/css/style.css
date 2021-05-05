@@ -30,9 +30,10 @@ textarea {
 
 .btn-city-select {
   border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  /* border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px; */
   background-color: #06aed5;
+  text-align: center;
   color: white;
 }
 .saveBtn i:hover {
