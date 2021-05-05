@@ -135,9 +135,12 @@ $(document).ready(function () {
     } else {
       uviColor.classList.add("btn-danger");
     }
+
     uviColor.textContent = uvi;
     uvEl.append(uviColor);
     cardBody.append(uvEl);
+
+    //initialize todays forecast container as empty
     todayContainer.innerHTML = "";
     todayContainer.append(card);
   }
@@ -147,34 +150,20 @@ $(document).ready(function () {
     var unixTs = forecastData.dt;
     var iconUrl = `https://openweathermap.org/img/w/${forecastData.weather[0].icon}.png`;
     var iconDescription = forecastData.weather[0].description;
-    var tempF = forecastData.temp.day;
+    var temp = forecastData.temp.day;
     var { humidity } = forecastData;
     var windMph = forecastData.wind_speed;
+    //build url for forecast card weather icon
+    var iconUrl = `https://openweathermap.org/img/w/${forecastData.weather[0].icon}.png`;
+    var iconDescription = forecastData.weather[0].description;
     // Create elements for a card
     // var col = document.createElement("div");
-    var card = document.createElement("div");
-    var cardBody = document.createElement("div");
-    var cardTitle = document.createElement("h5");
-    var weatherIcon = document.createElement("img");
-    var tempEl = document.createElement("p");
-    var windEl = document.createElement("p");
-    var humidityEl = document.createElement("p");
 
-    //col.append(card);
-    card.append(cardBody);
-    cardBody.append(cardTitle, weatherIcon, tempEl, windEl, humidityEl);
-    // col.setAttribute("class", "col-md");
-    // col.classList.add("five-day-card");
-    // card.setAttribute("class", "card bg-primary h-100 text-white");
-    // cardBody.setAttribute("class", "card-body p-2");
-    // cardTitle.setAttribute("class", "card-title");
-    // tempEl.setAttribute("class", "card-text");
-    // windEl.setAttribute("class", "card-text");
-    // humidityEl.setAttribute("class", "card-text");
-
+    //div class="card"
     var card = document.createElement("div");
     card.setAttribute("class", "card");
     card.setAttribute("width", "18rem");
+
     //div class="card-body"
     var cardBody = document.createElement("div");
     cardBody.setAttribute("class", "card-body");
@@ -195,13 +184,22 @@ $(document).ready(function () {
     var uviColor = document.createElement("button");
     uvEl.textContent = "UV Index: ";
     // Add content to elements
-    cardTitle.textContent = dayjs.unix(unixTs).format("M/D/YYYY");
+    heading.textContent = dayjs.unix(unixTs).format("M/D/YYYY");
+    //add weather icons to cards
+    var weatherIcon = document.createElement("img");
     weatherIcon.setAttribute("src", iconUrl);
     weatherIcon.setAttribute("alt", iconDescription);
-    tempEl.textContent = `Temp: ${tempF} °F`;
+    weatherIcon.setAttribute("class", "weather-img");
+
+    tempEl.textContent = `Temp: ${temp} °F`;
     windEl.textContent = `Wind: ${windMph} MPH`;
     humidityEl.textContent = `Humidity: ${humidity} %`;
+    //col.append(card);
+    card.append(cardBody);
+
+    cardBody.append(heading, weatherIcon, tempEl, windEl, humidityEl);
     forecastContainer.append(card);
+    console.log(card);
   }
 
   // Function to display 5 day forecast.
@@ -211,21 +209,14 @@ $(document).ready(function () {
     var startDt = dayjs().add(1, "day").startOf("day").unix();
     var endDt = dayjs().add(6, "day").startOf("day").unix();
 
-    var headingCol = document.createElement("div");
+    var headingContainer = document.createElement("div");
+    headingContainer.setAttribute("class", "row-10");
 
-    var heading = document.createElement("h4");
-
-    headingCol.setAttribute("class", "col-12");
-
-    heading.textContent = "5-Day Forecast:";
-    headingCol.append(heading);
     forecastContainer.innerHTML = "";
-    forecastContainer.append(headingCol);
+    forecastContainer.append(headingContainer);
+    console.log(headingContainer);
+
     for (var i = 0; i < forecastData.length; i++) {
-      // The api returns forecast data which may include 12pm on the same day and
-      // always includes the next 7 days. The api documentation does not provide
-      // information on the behavior for including the same day. Results may have
-      // 7 or 8 items.
       if (forecastData[i].dt >= startDt && forecastData[i].dt < endDt) {
         displayForecastCard(forecastData[i]);
       }
