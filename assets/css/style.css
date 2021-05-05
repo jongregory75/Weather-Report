@@ -43,3 +43,7 @@ textarea {
   text-align: left;
   justify-content: flex-start;
 }
+
+.forecastContainer {
+  display: flex;
+}
