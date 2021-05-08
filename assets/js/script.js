@@ -1,13 +1,12 @@
 var apiKey1 = "b332282f910be7fa8ffff49f3e6cd500";
 apiKey2 = "69a45c4ce47da9d049d6e6617b57a97f";
-//var cityButton = document.getElementById("btn-city-select");
 var coord = "";
 var city = "";
 var long = "";
 var lat = "";
 var oneCallData;
 var oneCallUrl = "";
-var baseUrl = "http://api.openweathermap.org/data/2.5/";
+var baseUrl = "https://api.openweathermap.org/data/2.5/";
 var cityUrl = "";
 
 $(document).ready(function () {
@@ -21,6 +20,12 @@ $(document).ready(function () {
 
     //put city input into local storage
     localStorage.setItem(cityName, JSON.stringify(cityValue));
+    //localStorage.getItem(cityName, value);
+    // var firstCity = document.createElement("li");
+    // var liParentEl = document.getElementById("city-list");
+    // firstCity.textContent(cityName.value);
+    // liParentEl.appendChild(firstCity);
+
     buildCityUrl(city);
   });
 
@@ -113,7 +118,6 @@ $(document).ready(function () {
     weatherIcon.setAttribute("alt", iconDescription);
     weatherIcon.setAttribute("class", "weather-img");
 
-    //heading.textContent = `${city} (${date})`;
     //add temp content
     tempEl.textContent = `Temp: ${temp}°F`;
     //add wind content
@@ -153,6 +157,7 @@ $(document).ready(function () {
     var temp = forecastData.temp.day;
     var { humidity } = forecastData;
     var windMph = forecastData.wind_speed;
+
     //build url for forecast card weather icon
     var iconUrl = `https://openweathermap.org/img/w/${forecastData.weather[0].icon}.png`;
     var iconDescription = forecastData.weather[0].description;
@@ -192,7 +197,6 @@ $(document).ready(function () {
     tempEl.textContent = `Temp: ${temp} °F`;
     windEl.textContent = `Wind: ${windMph} MPH`;
     humidityEl.textContent = `Humidity: ${humidity} %`;
-    //col.append(card);
     card.append(cardBody);
 
     cardBody.append(heading, weatherIcon, tempEl, windEl, humidityEl);
